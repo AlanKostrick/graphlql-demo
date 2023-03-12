@@ -47,7 +47,7 @@ var coursesData = [
     {
         id: 3,
         title: 'JavaScript: Understanding The Weird Parts',
-        author: [{ id: 7, firstName: 'Anthony', lastName: 'Alicea' }],
+        authors: [{ id: 7, firstName: 'Anthony', lastName: 'Alicea' }],
         description: 'An advanced JavaScript course for everyone! Scope, closures, prototypes, this, build your own framework, and more.',
         topic: 'JavaScript',
         url: 'https://codingthesmartway.com/courses/understand-javascript/'
