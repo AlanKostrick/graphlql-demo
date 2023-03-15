@@ -1,0 +1,23 @@
+.header {
+    display: flex;
+    font-size: 22px;
+    font-weight: 700;
+    justify-content: space-between;
+    margin: auto;
+    max-width: 60rem;
+    padding: 2rem;
+}
+
+.list {
+    display: flex;
+    gap: 1rem;
+    list-style-type: none;
+}
+
+.list a {
+    text-decoration: none;
+}
+
+.list a.active {
+    text-decoration: underline;
+}

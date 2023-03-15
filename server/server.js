@@ -1,13 +1,14 @@
 var express = require('express');
 var express_graphql = require('express-graphql').graphqlHTTP;
 var { buildSchema } = require('graphql');
-const cors = require('cors')
+const cors = require('cors');
+var coursesData = require('./coursesData.json');
 
 // GraphQL schema
 var schema = buildSchema(`
     type Query {
         course(id: Int!): Course
-        courses(topic: String): [Course]
+        coursesByTopic(topic: String): [Course]
         allCourses: [Course]
     },
     type Mutation {
@@ -27,39 +28,14 @@ var schema = buildSchema(`
         url: String
     }
 `);
-var coursesData = [
-    {
-        id: 1,
-        title: 'The Complete Node.js Developer Course',
-        authors: [{ id: 4, firstName: 'Andrew', lastName: 'Mead' }, { id: 5, firstName: 'Rob', lastName: 'Percival' }],
-        description: 'Learn Node.js by building real-world applications with Node, Express, MongoDB, Mocha, and more!',
-        topic: 'Node.js',
-        url: 'https://codingthesmartway.com/courses/nodejs/'
-    },
-    {
-        id: 2,
-        title: 'Node.js, Express & MongoDB Dev to Deployment',
-        authors: [{ id: 6, firstName: 'Brad', lastName: 'Traversy' }],
-        description: 'Learn by example building & deploying real-world Node.js applications from absolute scratch',
-        topic: 'Node.js',
-        url: 'https://codingthesmartway.com/courses/nodejs-express-mongodb/'
-    },
-    {
-        id: 3,
-        title: 'JavaScript: Understanding The Weird Parts',
-        authors: [{ id: 7, firstName: 'Anthony', lastName: 'Alicea' }],
-        description: 'An advanced JavaScript course for everyone! Scope, closures, prototypes, this, build your own framework, and more.',
-        topic: 'JavaScript',
-        url: 'https://codingthesmartway.com/courses/understand-javascript/'
-    }
-]
+
 var getCourse = function (args) {
     var id = args.id;
     return coursesData.filter(course => {
         return course.id == id;
     })[0];
 }
-var getCourses = function (args) {
+var getCoursesByTopic = function (args) {
     if (args.topic) {
         var topic = args.topic;
         return coursesData.filter(course => course.topic === topic);
@@ -82,7 +58,7 @@ var updateCourseTopic = function ({ id, topic }) {
 
 var root = {
     course: getCourse,
-    courses: getCourses,
+    coursesByTopic: getCoursesByTopic,
     allCourses: getAllCourses,
     updateCourseTopic: updateCourseTopic
 };

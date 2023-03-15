@@ -1,48 +1,40 @@
-import './App.css';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
-import { gql, useQuery } from '@apollo/client';
+import CoursesScreen from './screens/CoursesScreen';
+import HomeScreen from './screens/HomeScreen';
+import Layout from './screens/Layout';
+import TopicCoursesScreen from './screens/TopicCoursesScreen';
 
-const ALL_COURSES = gql`
-   {
-    allCourses {
-      authors {
-        id
-        firstName
-        lastName
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Layout />,
+    children: [
+      {
+        index: true,
+        element: <HomeScreen />
+      },
+      {
+        path: 'courses',
+        children: [
+          {
+            index: true,
+            element: <CoursesScreen />
+          },
+          {
+            path: ':topic',
+            element: <TopicCoursesScreen />
+          }
+        ]
       }
-      description
-      id
-      title
-    }
+    ]
   }
-`
+])
 
-//console.log(ALL_COURSES);
-
-function App() {
-
-  const { loading, error, data } = useQuery(ALL_COURSES);
-
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error : {error.message}</p>;
-
-  // console.log(data);
-
-  return (
-    <div className="App">
-      <h2>Our Courses</h2>
-      {data.allCourses.map(course => (
-        <div key={course.id}>
-          <h3>{course.title}</h3>
-          <h4>Authors</h4>
-          {course.authors && course.authors.map(author => (
-            <p>{author.firstName} {author.lastName}</p>
-          ))}
-          <div>{course.description} </div>
-        </div>
-      ))}
-    </div>
-  );
-}
+const App = () => (
+  <div style={{ textAlign: 'center' }}>
+    <RouterProvider router={router} />
+  </div>
+);
 
 export default App;

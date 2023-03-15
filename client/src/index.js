@@ -1,4 +1,6 @@
-import { ApolloClient, ApolloProvider, InMemoryCache, gql } from '@apollo/client';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 
 import App from './App';
 import React from 'react';
