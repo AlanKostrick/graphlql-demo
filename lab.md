@@ -1,5 +1,5 @@
 # Practice: Apply the ability to add a course to the application 
-In this lab, you can use what is already in place as a pattern to create a `mutataion` to `addCourse` to the application. 
+In this lab, you can use what is already in place as a pattern to create a `mutation` to `addCourse` to the application. 
 
 If you happen to get stuck on this lab, [here is the solution](https://github.com/AlanKostrick/graphlql-demo/tree/lab-solution)
 
@@ -145,7 +145,7 @@ mutation AddCourse($title:String, $authors:[AuthorInput], $description:String, $
   addCourse(title:$title, authors:$authors, description:$description, topic:$topic, url:$url){
     title
     authors{
-			firstName
+      firstName
       lastName
     }
     description
