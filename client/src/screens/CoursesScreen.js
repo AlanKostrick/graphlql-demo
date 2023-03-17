@@ -23,7 +23,7 @@ const ALL_COURSES = gql`
 `
 
 const CHANGE_TOPIC = gql`
-    mutation ChangeTopic($id:Int!, $topic:String!){
+    mutation ChangeTopic($id:String!, $topic:String!){
         updateCourseTopic(
             id:$id,
             topic:$topic
