@@ -30,7 +30,7 @@ const TopicCoursesScreen = () => {
     if (loading) return null;
     if (error) return `Error! ${error}`;
 
-    console.log(data);
+    //console.log(data);
 
     return (
         <>

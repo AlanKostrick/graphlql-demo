@@ -218,6 +218,38 @@ const [newCourseUrl, setNewCourseUrl] = useState(null);
 
 That's quite a few variables. Once again, this is another thing that can be refactored to either be managed by a `useForm` hook or in a state management library like `redux` but for now, declaring these variables will work in the scope of our activity. 
 
+
+3. Create the `addCourse` function and leverage the `useMutation` hook...notice we want to `refetch` the `ALL_COURSES` query, since it is cached, so that our newly added course will show in the UI.
+
+```javascript
+const [addCourse] = useMutation(ADD_COURSE, {
+        refetchQueries: [
+            { query: ALL_COURSES },
+            'GetAllCourses'
+        ]
+    });
+```
+
+4. Create the handler function to save a course
+```javascript
+ const handleSaveCourse = () => {
+        addCourse({
+            variables: {
+                title: newCourseTitle,
+                authors: {
+                    firstName: newCourseAuthorFirstName,
+                    lastName: newCourseAuthorLastName
+                },
+                description: newCourseDescription,
+                topic: newCourseTopic,
+                url: newCourseUrl
+            }
+        });
+        setShowAddModal(false);
+    }
+```
+
+
 3. Add the JSX to the UI
 
 We need a `Button` to add a course and a `Modal` to manage the form data.

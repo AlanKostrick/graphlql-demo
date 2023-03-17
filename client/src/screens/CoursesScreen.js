@@ -108,7 +108,7 @@ const CoursesScreen = () => {
                 <Modal.Body>
                     <>
                         <Form>
-                            <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
+                            <Form.Group as={Row} className="mb-3" controlId="formPlaintextTitle">
                                 <Form.Label column sm="2">
                                     Title
                                 </Form.Label>
@@ -117,7 +117,7 @@ const CoursesScreen = () => {
                                 </Col>
                             </Form.Group>
 
-                            <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
+                            <Form.Group as={Row} className="mb-3" controlId="formPlaintextTopic">
                                 <Form.Label column sm="2">
                                     Topic
                                 </Form.Label>
