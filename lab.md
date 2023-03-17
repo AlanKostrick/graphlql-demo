@@ -166,7 +166,7 @@ And in the `Query Variables` section at the bottom of the playground... go ahead
       "lastName": "Kostrick"
     }
   ],
-  "description": "An introduction to GraphQLin node and React",
+  "description": "An introduction to GraphQL in node and React",
   "topic": "GraphQL",
   "url": "codelaborators.io"
 }
