@@ -1,15 +1,13 @@
 [
     {
-        "id": 1,
+        "id": "1",
         "title": "The Complete Node.js Developer Course",
         "authors": [
             {
-                "id": 4,
                 "firstName": "Andrew",
                 "lastName": "Mead"
             },
             {
-                "id": 5,
                 "firstName": "Rob",
                 "lastName": "Percival"
             }
@@ -19,11 +17,10 @@
         "url": "https: //codingthesmartway.com/courses/nodejs/"
     },
     {
-        "id": 2,
+        "id": "2",
         "title": "Node.js, Express & MongoDB Dev to Deployment",
         "authors": [
             {
-                "id": 6,
                 "firstName": "Brad",
                 "lastName": "Traversy"
             }
@@ -33,11 +30,10 @@
         "url": "https: //codingthesmartway.com/courses/nodejs-express-mongodb/"
     },
     {
-        "id": 3,
+        "id": "3",
         "title": "JavaScript: Understanding The Weird Parts",
         "authors": [
             {
-                "id": 7,
                 "firstName": "Anthony",
                 "lastName": "Alicea"
             }
@@ -47,11 +43,10 @@
         "url": "https: //codingthesmartway.com/courses/understand-javascript/"
     },
     {
-        "id": 8,
+        "id": "4",
         "title": "The Road to GraphQL",
         "authors": [
             {
-                "id": 9,
                 "firstName": "Robin",
                 "lastName": "Wieruch"
             }

@@ -12,7 +12,6 @@ const ALL_COURSES = gql`
     allCourses {
       authors {
         firstName
-        id
         lastName
       }
       description
@@ -24,7 +23,7 @@ const ALL_COURSES = gql`
 `
 
 const CHANGE_TOPIC = gql`
-    mutation ChangeTopic($id:Int!, $topic:String!){
+    mutation ChangeTopic($id:String!, $topic:String!){
         updateCourseTopic(
             id:$id,
             topic:$topic
@@ -32,7 +31,6 @@ const CHANGE_TOPIC = gql`
         {
             title
             authors {
-                id
                 firstName
                 lastName
             }
@@ -91,8 +89,8 @@ const CoursesScreen = () => {
                 <div style={{ backgroundColor: '#eee', margin: '50px', padding: '20px' }} key={course.id}>
                     <h3>{course.title}</h3>
                     <h4>Authors</h4>
-                    {course.authors && course.authors.map(author => (
-                        <div key={author.id}>
+                    {course.authors && course.authors.map((author, index) => (
+                        <div key={index}>
                             <p>{author.firstName} {author.lastName}</p>
                         </div>
                     ))}

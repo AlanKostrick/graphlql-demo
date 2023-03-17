@@ -7,20 +7,19 @@ var coursesData = require('./coursesData.json');
 // GraphQL schema
 var schema = buildSchema(`
     type Query {
-        course(id: Int!): Course
+        course(id: String!): Course
         coursesByTopic(topic: String): [Course]
         allCourses: [Course]
     },
     type Mutation {
-        updateCourseTopic(id: Int!, topic: String!): Course
+        updateCourseTopic(id: String!, topic: String!): Course
     },
     type Author {
-        id: Int 
         firstName: String 
         lastName: String
     }
     type Course {
-        id: Int
+        id: String
         title: String
         authors: [Author]
         description: String

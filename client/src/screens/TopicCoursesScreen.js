@@ -8,7 +8,6 @@ const COURSES_BY_TOPIC = gql`
         coursesByTopic(topic: $topic) {
             authors {
                 firstName
-                id
                 lastName
             }
             description
@@ -41,8 +40,8 @@ const TopicCoursesScreen = () => {
                     <div style={{ backgroundColor: '#eee', margin: '50px', padding: '20px' }} key={course.id}>
                         <h3>{course.title}</h3>
                         <h4>Authors</h4>
-                        {course.authors && course.authors.map(author => (
-                            <div key={author.id}>
+                        {course.authors && course.authors.map((author, index) => (
+                            <div key={index}>
                                 <p>{author.firstName} {author.lastName}</p>
                             </div>
                         ))}
