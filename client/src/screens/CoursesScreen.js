@@ -87,7 +87,7 @@ const CoursesScreen = () => {
             { query: ALL_COURSES },
             'GetAllCourses'
         ]
-    })
+    });
 
     const handleClose = () => {
         if (updatedTopic !== null) {
@@ -96,7 +96,7 @@ const CoursesScreen = () => {
                     id: courseInfo.id,
                     topic: updatedTopic
                 }
-            })
+            });
         }
         setShow(false);
     }
