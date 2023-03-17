@@ -223,7 +223,7 @@ That's quite a few variables. Once again, this is another thing that can be refa
 We need a `Button` to add a course and a `Modal` to manage the form data.
 
 ```jsx
-<Button onClick={() => setShowAddModal(true)}>Add a course</Button>
+            <Button onClick={() => setShowAddModal(true)}>Add a course</Button>
             <Modal show={showAddModal} onHide={() => setShowAddModal(false)}>
                 <Modal.Header closeButton>
                     <Modal.Title>Add a course</Modal.Title>
