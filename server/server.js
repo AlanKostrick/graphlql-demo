@@ -1,11 +1,11 @@
-var express = require('express');
-var express_graphql = require('express-graphql').graphqlHTTP;
-var { buildSchema } = require('graphql');
+const express = require('express');
+const express_graphql = require('express-graphql').graphqlHTTP;
+const { buildSchema } = require('graphql');
 const cors = require('cors');
-var coursesData = require('./coursesData.json');
+const coursesData = require('./coursesData.json');
 
 // GraphQL schema
-var schema = buildSchema(`
+const schema = buildSchema(`
     type Query {
         course(id: String!): Course
         coursesByTopic(topic: String): [Course]
@@ -28,41 +28,43 @@ var schema = buildSchema(`
     }
 `);
 
-var getCourse = function (args) {
-    var id = args.id;
+//Resolver functions are responsible for data population
+function getCourse(args) {
+    const id = args.id;
     return coursesData.filter(course => {
         return course.id == id;
     })[0];
 }
-var getCoursesByTopic = function (args) {
+function getCoursesByTopic(args) {
     if (args.topic) {
-        var topic = args.topic;
+        const topic = args.topic;
         return coursesData.filter(course => course.topic === topic);
     } else {
         return coursesData;
     }
 }
-var getAllCourses = function () {
+function getAllCourses() {
     return coursesData;
 }
-var updateCourseTopic = function ({ id, topic }) {
+function updateCourseTopic(args) {
     coursesData.map(course => {
-        if (course.id === id) {
-            course.topic = topic;
+        if (course.id === args.id) {
+            course.topic = args.topic;
             return course;
         }
     });
-    return coursesData.filter(course => course.id === id)[0];
+    return coursesData.find(course => course.id === args.id);
 }
 
-var root = {
+const root = {
     course: getCourse,
     coursesByTopic: getCoursesByTopic,
     allCourses: getAllCourses,
     updateCourseTopic: updateCourseTopic
 };
+
 // Create an express server and a GraphQL endpoint
-var app = express();
+const app = express();
 app.use(cors());
 app.use('/graphql', express_graphql({
     schema: schema,

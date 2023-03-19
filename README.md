@@ -31,6 +31,7 @@ To stop either server or client, run `ctrl c` or `ctrl z`
 
 ## Resources
 - The [initial reference](https://medium.com/codingthesmartway-com-blog/creating-a-graphql-server-with-node-js-and-express-f6dddc5320e1) to build the server
+- [Apollo Docs: Resolver Functions](https://www.apollographql.com/docs/apollo-server/data/resolvers/#resolver-arguments)
 - [Getting Started with Apollo Client](https://www.apollographql.com/docs/react/get-started/)
 - [Apollo Docs: Queries](https://www.apollographql.com/docs/react/data/queries/)
 - [Apollo Docs: Caching](https://www.apollographql.com/docs/react/caching/advanced-topics/)
