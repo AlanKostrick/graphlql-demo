@@ -49,7 +49,7 @@ Your new `schema` object should look like the following
 
 ```javascript
 // GraphQL schema
-var schema = buildSchema(`
+const schema = buildSchema(`
     input AuthorInput {
         firstName: String, 
         lastName: String
@@ -96,20 +96,20 @@ const { v4: generateId } = require('uuid');
 Now go ahead and create the function.
 
 ```javascript
-var addCourse = function ({ title, authors, description, topic, url }) {
+function addCourse(args) {
 
     let foundCourse = null;
 
-    foundCourse = coursesData.find(course => course.title === title);
+    foundCourse = coursesData.find(course => course.title === args.title);
 
     if (!foundCourse) {
-        var course = {
+        const course = {
             id: generateId(),
-            title: title,
-            authors: authors,
-            description: description,
-            topic: topic,
-            url: url
+            title: args.title,
+            authors: args.authors,
+            description: args.description,
+            topic: args.topic,
+            url: args.url
         }
         coursesData.push(course);
         return course;
@@ -122,7 +122,7 @@ var addCourse = function ({ title, authors, description, topic, url }) {
 Finally, update the `root` to include this new function 
 
 ```javascript
-var root = {
+const root = {
     course: getCourse,
     coursesByTopic: getCoursesByTopic,
     allCourses: getAllCourses,
